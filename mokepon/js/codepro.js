@@ -1,13 +1,19 @@
 //*Variables globales*
 let ataqueJugador 
 let ataqueEnemigo
-let vidasJugador =3
+let vidasJugador = 3
 let vidasEnemigo = 3
 
 
 //*Funciones de de juego*
 //Funcion para inicio del juego, definicion de botones direccionamiento a HTML
 function iniciarJuego(){
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'none'
+
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
 
@@ -24,6 +30,12 @@ function iniciarJuego(){
 
 //Funcion par ala seleccion de mascota por parte del jugador y generacion aleatoria de la mascota del enemigo
 function seleccionarMascotaJugador(){
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'block'
+
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+    sectionSeleccionarMascota.style.display = 'none'
+
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipepo = document.getElementById('capipepo')
     let inputRatigueya = document.getElementById('ratigueya')
@@ -47,17 +59,19 @@ function seleccionarMascotaJugador(){
     }else if (inputPydos.checked){
         spanMascotaJugador.innerHTML = 'PYDOS'
     }else{
-        alert("NO SELECCIONASTE MASCOTA !!!")
+        reiniciarJuego()
     }
-    
+   
     seleccionarMascotaEnemigo()
 }
 
 //Funcion para la generacion aleatoria de la mascota del enemigo
 function seleccionarMascotaEnemigo(){
+
     let mascotaAleatorio = aleatorio(1,6)
     let spanMascotaEnemigo= document.getElementById('mascota-enemigo')
 
+    
     if (mascotaAleatorio == 1){
         spanMascotaEnemigo.innerHTML = 'HIPODOGE'
     }else if (mascotaAleatorio == 2){
@@ -155,6 +169,9 @@ function crearMensaje(resultadoCombate){
 
 //*Funcion para la creacion y envio del mensaje final del combate.*/
 function crearMensajeFinal(resultadoCombateFinal){
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'block'
+
     let sectionMensajes = document.getElementById('mensajes')
     let parrafo = document.createElement('p')
 
