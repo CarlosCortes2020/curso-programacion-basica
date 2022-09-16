@@ -127,7 +127,17 @@ function combate(){
         spanVidasJugador.innerHTML = vidasJugador
     }
 
+    revisarVidas()
 
+}
+
+//*Funcion para revisar el conteo de vidas y enviar mensaje de ganador*/
+function revisarVidas(){
+    if (vidasEnemigo == 0){
+        crearMensajeFinal("FELICIDADES GANASTE !!!")
+    }else if (vidasJugador == 0){
+        crearMensajeFinal("LO SIENTO, PERDISTE !!!")
+    }
 }
 
 //*Funcion para la creacion de los mensajes de la partida */
@@ -136,6 +146,16 @@ function crearMensaje(resultadoCombate){
     let parrafo = document.createElement('p')
 
     parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + '- ' + resultadoCombate
+    
+    sectionMensajes.appendChild(parrafo)
+}
+
+//*Funcion para la creacion y envio del mensaje final del combate.*/
+function crearMensajeFinal(resultadoCombateFinal){
+    let sectionMensajes = document.getElementById('mensajes')
+    let parrafo = document.createElement('p')
+
+    parrafo.innerHTML = resultadoCombateFinal
     
     sectionMensajes.appendChild(parrafo)
 }
