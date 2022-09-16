@@ -17,6 +17,9 @@ function iniciarJuego(){
     botonAgua.addEventListener('click', ataqueAgua)
     let botonTierra =document.getElementById('boton-tierra')
     botonTierra.addEventListener('click', ataqueTierra)
+
+    let botonReiniciar = document.getElementById('boton-reiniciar')
+    botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
 //Funcion par ala seleccion de mascota por parte del jugador y generacion aleatoria de la mascota del enemigo
@@ -158,6 +161,19 @@ function crearMensajeFinal(resultadoCombateFinal){
     parrafo.innerHTML = resultadoCombateFinal
     
     sectionMensajes.appendChild(parrafo)
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.disabled = true
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.disabled = true
+    let botonTierra =document.getElementById('boton-tierra')
+    botonTierra.disabled = true
+
+}
+
+//*Funcion para realizar el reinicio del juego */
+function reiniciarJuego(){
+    location.reload()
 }
 
 //*Funcion para la generacion aleatoria de un numero dentro de un rango dado */
