@@ -1,9 +1,10 @@
-//Variables globales
+//*Variables globales*
 let ataqueJugador 
 let ataqueEnemigo
 
 
-//Funciones de de juego
+//*Funciones de de juego*
+//Funcion para inicio del juego, definicion de botones direccionamiento a HTML
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
@@ -16,6 +17,7 @@ function iniciarJuego(){
     botonTierra.addEventListener('click', ataqueTierra)
 }
 
+//Funcion par ala seleccion de mascota por parte del jugador y generacion aleatoria de la mascota del enemigo
 function seleccionarMascotaJugador(){
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipepo = document.getElementById('capipepo')
@@ -46,6 +48,7 @@ function seleccionarMascotaJugador(){
     seleccionarMascotaEnemigo()
 }
 
+//Funcion para la generacion aleatoria de la mascota del enemigo
 function seleccionarMascotaEnemigo(){
     let mascotaAleatorio = aleatorio(1,6)
     let spanMascotaEnemigo= document.getElementById('mascota-enemigo')
@@ -67,6 +70,7 @@ function seleccionarMascotaEnemigo(){
 
 }
 
+//*Funciones par la seleccion del ataque del jugador*
 function ataqueFuego(){
     ataqueJugador = 'FUEGO'
     ataqueAleatorioEnemigo () 
@@ -82,6 +86,7 @@ function ataqueTierra(){
     ataqueAleatorioEnemigo () 
 }
 
+//*Funcion para la generacion aleatoria de ataque del enemigo */
 function ataqueAleatorioEnemigo(){
     let ataqueAleatorio = aleatorio(1,3)
 
@@ -92,9 +97,21 @@ function ataqueAleatorioEnemigo(){
     }else if (ataqueAleatorio == 3){
         ataqueEnemigo ='TIERRA'
     }
-    
+
+    crearMensaje()
 }
 
+//*Funcion para la creacion de los mensajes de la partida */
+function crearMensaje(){
+    let sectionMensajes = document.getElementById('mensajes')
+    let parrafo = document.createElement('p')
+
+    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + '- PENDIENTE'
+    
+    sectionMensajes.appendChild(parrafo)
+}
+
+//*Funcion para la generacion aleatoria de un numero dentro de un rango dado */
 function aleatorio(min,max){
     return Math.floor(Math.random()*(max - min + 1) + min)
 }
