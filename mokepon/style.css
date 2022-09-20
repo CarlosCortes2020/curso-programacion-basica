@@ -4,3 +4,21 @@
     height: 50px;
     background-color: black;
 }
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta-mokepon {
+    
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    padding: 10px;
+    background: skyblue;
+    border: outset;
+    margin: 2px;
+}
