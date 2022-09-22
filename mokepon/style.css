@@ -1,15 +1,32 @@
-.titulo {
-    color: gray;
-    width: 325px;
-    height: 50px;
-    background-color: black;
+@import url('https://fonts.google.com/specimen/Titan+One?category=Display');
+
+body{
+    font-family: 'Titan-One', cursive;
+    background-color: midnightblue;
 }
+
+
 
 #seleccionar-mascota {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.titulo {
+    color: white;
+    font-size: 40px;
+    }
+
+.subtitulo{
+    color: whitesmoke;
+    font-size: 32px;
+}
+
+.tarjetas{
+    display: flex;
+    gap: 10px;
 }
 
 .tarjeta-mokepon {
@@ -21,4 +38,5 @@
     background: skyblue;
     border: outset;
     margin: 2px;
+    border-radius: 20px;
 }
