@@ -1,7 +1,9 @@
-@import url('https://fonts.google.com/specimen/Titan+One?category=Display');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 body{
-    font-family: 'Titan-One', cursive;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Titan One', cursive;
     background-color: midnightblue;
 }
 
@@ -15,28 +17,57 @@ body{
 }
 
 .titulo {
+    font-family: 'Titan One', cursive;
     color: white;
-    font-size: 40px;
+    font-size: 80px;
     }
 
 .subtitulo{
     color: whitesmoke;
-    font-size: 32px;
+    font-size: 50px;
 }
 
 .tarjetas{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 
 .tarjeta-mokepon {
     
-    width: 100px;
-    height: 20px;
+    width: 200px;
+    height: 100px;
     text-align: center;
     padding: 10px;
     background: skyblue;
     border: outset;
     margin: 2px;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+}
+
+.tarjeta-mokepon img {
+    width: 100px;
+
+}
+
+#boton-mascota {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: 3px solid white;
+    margin-top: 10px;
+    background: transparent;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: x-large;
+
+}
+
+input {
+    display: none;
 }
