@@ -31,7 +31,7 @@ function iniciarJuego(){
 //Funcion par ala seleccion de mascota por parte del jugador y generacion aleatoria de la mascota del enemigo
 function seleccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
-    sectionSeleccionarAtaque.style.display = 'block'
+    sectionSeleccionarAtaque.style.display = 'flex'
 
     let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
     sectionSeleccionarMascota.style.display = 'none'
@@ -158,13 +158,29 @@ function revisarVidas(){
 }
 
 //*Funcion para la creacion de los mensajes de la partida */
+//*Cambio de variable 'mensajes' por la variable 'resultado' proveniente de codigo html*/
+//*Adicion de variables ataque-jugador y ataque-enemigo*/
 function crearMensaje(resultadoCombate){
-    let sectionMensajes = document.getElementById('mensajes')
-    let parrafo = document.createElement('p')
+    //let sectionMensajes = document.getElementById('mensajes')
+    let sectionMensajes = document.getElementById('resultado')
+    let ataqueJugadorCSS = document.getElementById('ataque-jugador')
+    let ataqueEnemigoCSS = document.getElementById('ataque-enemigo')
 
-    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + '- ' + resultadoCombate
-    
-    sectionMensajes.appendChild(parrafo)
+    let nuevoAtaqueJugador = document.createElement('p')
+    let nuevoAtaqueEnemigo = document.createElement('p')
+
+    sectionMensajes.innerHTML = resultadoCombate
+    nuevoAtaqueJugador.innerHTML = ataqueJugador
+    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
+
+    //Codigo comentado para dar paso a la creacion de los parrafos de las variables de ataque
+    //let parrafo = document.createElement('p')
+    //parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + '- ' + resultadoCombate
+    //sectionMensajes.appendChild(parrafo)
+
+    ataqueJugadorCSS.appendChild(nuevoAtaqueJugador)
+    ataqueEnemigoCSS.appendChild(nuevoAtaqueEnemigo)
+
 }
 
 //*Funcion para la creacion y envio del mensaje final del combate.*/
@@ -172,12 +188,11 @@ function crearMensajeFinal(resultadoCombateFinal){
     let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'block'
 
-    let sectionMensajes = document.getElementById('mensajes')
-    let parrafo = document.createElement('p')
-
-    parrafo.innerHTML = resultadoCombateFinal
+    let sectionMensajes = document.getElementById('resultado')
+    //let parrafo = document.createElement('p')
+    sectionMensajes.innerHTML = resultadoCombateFinal
     
-    sectionMensajes.appendChild(parrafo)
+    //sectionMensajes.appendChild(parrafo)
 
     let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true
