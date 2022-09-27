@@ -117,3 +117,15 @@ input {
     font-family: 'Poppins', sans-serif;
     font-size: x-large;    
 }
+
+.combate-ataques {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    justify-items: center;
+    text-align: center;
+}
+
+#vidas-jugador {
+    background-color: whitesmoke;
+
+}
