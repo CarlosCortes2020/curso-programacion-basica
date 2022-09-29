@@ -170,16 +170,19 @@ function crearMensaje(resultadoCombate){
     let nuevoAtaqueEnemigo = document.createElement('p')
 
     sectionMensajes.innerHTML = resultadoCombate
-    nuevoAtaqueJugador.innerHTML = ataqueJugador
-    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
+    ataqueJugadorCSS.innerHTML = ataqueJugador
+    ataqueEnemigoCSS.innerHTML = ataqueEnemigo
+
+    //nuevoAtaqueJugador.innerHTML = ataqueJugador
+    //nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
 
     //Codigo comentado para dar paso a la creacion de los parrafos de las variables de ataque
     //let parrafo = document.createElement('p')
     //parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + '- ' + resultadoCombate
     //sectionMensajes.appendChild(parrafo)
 
-    ataqueJugadorCSS.appendChild(nuevoAtaqueJugador)
-    ataqueEnemigoCSS.appendChild(nuevoAtaqueEnemigo)
+    //ataqueJugadorCSS.appendChild(nuevoAtaqueJugador)
+    //ataqueEnemigoCSS.appendChild(nuevoAtaqueEnemigo)
 
 }
 

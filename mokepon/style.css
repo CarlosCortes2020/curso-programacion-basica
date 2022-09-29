@@ -73,12 +73,19 @@ input {
     display: none;
 }
 
+input:checked + label {
+    background-color: gray;
+    color: whitesmoke;
+}
+
 #seleccionar-ataque {
     flex-direction: column;
     align-items: center;
 }
 
 .boton-ataque {
+    display: flex;
+    flex-direction: column;
     width: 200px;
     height: 50px;
     margin: 10px;
@@ -87,6 +94,7 @@ input {
     background: gray;
     font-family: 'Poppins', sans-serif;
     font-size: x-large;
+    align-items: stretch;
     
 }
 
@@ -120,12 +128,58 @@ input {
 
 .combate-ataques {
     display: grid;
+    background-color: skyblue;
+    border-radius: 20px;
+    border-style: outset;
     grid-template-columns: 200px 200px;
     justify-items: center;
     text-align: center;
+    padding: 10px;
 }
 
 #vidas-jugador {
     background-color: whitesmoke;
+    border-radius: 20px;
+}
 
+#mascota-jugador {
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+#ataque-jugador {
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+#vidas-enemigo {
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+#mascota-enemigo {
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+#ataque-enemigo {
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+@media (max-width: 360px) {
+    .tarjetas{
+        flex-direction: column;
+    }
+    .titulo {
+        margin: 10px;    
+        font-family: 'Titan One', cursive;
+        color: white;
+        font-size: 50px;
+    }
+    
+    .subtitulo{
+        color: whitesmoke;
+        font-size: 25px;
+    }
 }
