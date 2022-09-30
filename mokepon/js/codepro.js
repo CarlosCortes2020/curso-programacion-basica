@@ -32,6 +32,25 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+//*Seccion para creacion de clases
+class Mokepon {
+    constructor(nombre, foto, vida) {
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+
+    }
+}
+
+//* Creacion de objetos basados en las clases
+let hipodoge = new Mokepon('Hipodoge','./assets/hipodoge.png', 5)
+let capipepo = new Mokepon('Capipepo','./assets/capipepo.png', 5)
+let ratigueya = new Mokepon('Ratigueya','./assets/ratigueya.png', 5)
+let langostelvis = new Mokepon('Langostelvis','./assets/langostelvis.png', 5)
+let tucapalma = new Mokepon('Tucapalma','./assets/tucapalma.png', 5)
+let pydos = new Mokepon('Pydos','./assets/pydos.png', 5)
+
+console.log(hipodoge)
 
 //*Funciones de de juego*
 //Funcion para inicio del juego, definicion de botones direccionamiento a HTML
