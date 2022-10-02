@@ -10,13 +10,6 @@ const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
-const inputLangostelvis = document.getElementById('langostelvis')
-const inputTucapalma = document.getElementById('tucapalma')
-const inputPydos = document.getElementById('pydos')
-
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const spanMascotaEnemigo= document.getElementById('mascota-enemigo')
 
@@ -26,11 +19,21 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const sectionMensajes = document.getElementById('resultado')
 const ataqueJugadorCSS = document.getElementById('ataque-jugador')
 const ataqueEnemigoCSS = document.getElementById('ataque-enemigo')
+const contenedorTarjetas = document.getElementById('contenedorTarjetas')
+const contenedorAtaques = document.getElementById('contenedorAtaques')
 
 let mokepones =  []
 let ataqueJugador 
 let ataqueEnemigo
 let opcionDeMokepones
+let inputHipodoge 
+let inputCapipepo 
+let inputRatigueya
+let inputLangostelvis
+let inputTucapalma
+let inputPydos  
+let mascotaJugador
+let opcionAtaques
 
 let vidasJugador = 3
 let vidasEnemigo = 3
@@ -102,8 +105,24 @@ function iniciarJuego(){
     
     sectionSeleccionarAtaque.style.display = 'none'
 
+    //* Estructura para inyectar a HTML los datos de js
     mokepones.forEach((mokepon) => {
         console.log(mokepon.nombre)
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id = ${mokepon.nombre} />           
+        <label class="tarjeta-mokepon" for=${mokepon.nombre}>
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionDeMokepones 
+
+        inputHipodoge = document.getElementById('Hipodoge')
+        inputCapipepo = document.getElementById('Capipepo')
+        inputRatigueya = document.getElementById('Ratigueya')
+        inputLangostelvis = document.getElementById('Langostelvis')
+        inputTucapalma = document.getElementById('Tucapalma')
+        inputPydos = document.getElementById('Pydos')
     })
     //sectionReiniciar.style.display = 'none'
 
@@ -121,44 +140,61 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none'
 
     if (inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = 'HIPODOGE'
+        spanMascotaJugador.innerHTML = inputHipodoge.id
+        mascotaJugador = inputHipodoge.id
     }else if (inputCapipepo.checked){
-        spanMascotaJugador.innerHTML = 'CAPIPEPO'
+        spanMascotaJugador.innerHTML = inputCapipepo.id
+        mascotaJugador = inputCapipepo.id
     }else if (inputRatigueya.checked){
-        spanMascotaJugador.innerHTML = 'RATIGUEYA'
+        spanMascotaJugador.innerHTML = inputRatigueya.id
+        mascotaJugador = inputRatigueya.id
     }else if (inputLangostelvis.checked){
-        spanMascotaJugador.innerHTML = 'LANGOSTELVIS'
+        spanMascotaJugador.innerHTML = inputLangostelvis.id
+        mascotaJugador = inputLangostelvis.id
     }else if (inputTucapalma.checked){
-        spanMascotaJugador.innerHTML = 'TUCAPALMA'
+        spanMascotaJugador.innerHTML = inputTucapalma.id
+        mascotaJugador = inputTucapalma.id
     }else if (inputPydos.checked){
-        spanMascotaJugador.innerHTML = 'PYDOS'
+        spanMascotaJugador.innerHTML = inputPydos.id
+        mascotaJugador = inputPydos.id
     }else{
         reiniciarJuego()
     }
+
+    extraerAtaques(mascotaJugador)
    
     seleccionarMascotaEnemigo()
 }
 
+//*Funcion para extraer los ataques de cada mokepon
+function extraerAtaques(mascotaJugador){
+    let ataques
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre) {
+            ataques = mokepones[i].ataques
+        }
+                
+    }
+    console.log(ataques)
+    mostrarAtaques(ataques)
+    
+}
+
+function mostrarAtaques(ataques) {
+    ataques.forEach(ataque => {
+        opcionAtaques = `
+        <button id=${ataque.id} class="boton-ataque">${ataque.nombre}</button>
+        `
+        contenedorAtaques.innerHTML += opcionAtaques
+    })    
+}
 //Funcion para la generacion aleatoria de la mascota del enemigo
 function seleccionarMascotaEnemigo(){
 
-    let mascotaAleatorio = aleatorio(1,6)
+    let mascotaAleatorio = aleatorio(0,mokepones.length-1)
     
-    if (mascotaAleatorio == 1){
-        spanMascotaEnemigo.innerHTML = 'HIPODOGE'
-    }else if (mascotaAleatorio == 2){
-        spanMascotaEnemigo.innerHTML = 'CAPIPEPO'
-    }else if (mascotaAleatorio == 3){
-        spanMascotaEnemigo.innerHTML = 'RATIGUEYA'
-    }else if (mascotaAleatorio == 4){
-        spanMascotaEnemigo.innerHTML = 'LANGOSTELVIS'
-    }else if (mascotaAleatorio == 5){
-        spanMascotaEnemigo.innerHTML = 'TUCAPALMA'
-    }else if (mascotaAleatorio == 6){
-        spanMascotaEnemigo.innerHTML = 'PYDOS'
-    }
-
-
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
+   
 }
 
 //*Funciones par la seleccion del ataque del jugador*
