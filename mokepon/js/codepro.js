@@ -27,8 +27,11 @@ const sectionMensajes = document.getElementById('resultado')
 const ataqueJugadorCSS = document.getElementById('ataque-jugador')
 const ataqueEnemigoCSS = document.getElementById('ataque-enemigo')
 
+let mokepones =  []
 let ataqueJugador 
 let ataqueEnemigo
+let opcionDeMokepones
+
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -38,7 +41,7 @@ class Mokepon {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
-
+        this.ataques = []
     }
 }
 
@@ -50,14 +53,59 @@ let langostelvis = new Mokepon('Langostelvis','./assets/langostelvis.png', 5)
 let tucapalma = new Mokepon('Tucapalma','./assets/tucapalma.png', 5)
 let pydos = new Mokepon('Pydos','./assets/pydos.png', 5)
 
-console.log(hipodoge)
+//* Creacion de ataques para los pokemon
+
+hipodoge.ataques.push(
+    {nombre: '💥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌪️', id: 'boton-tierra'},
+)
+
+capipepo.ataques.push(
+    {nombre: '💥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌪️', id: 'boton-tierra'},
+)
+
+ratigueya.ataques.push(
+    {nombre: '💥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌪️', id: 'boton-tierra'},
+)
+
+langostelvis.ataques.push(
+    {nombre: '💥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌪️', id: 'boton-tierra'},
+)
+
+tucapalma.ataques.push(
+    {nombre: '💥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌪️', id: 'boton-tierra'},
+)
+
+pydos.ataques.push(
+    {nombre: '💥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌪️', id: 'boton-tierra'},
+)
+
+
+//*Seccion para definicion y llenado del arreglo de los mokepon
+mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, tucapalma, pydos)
+
 
 //*Funciones de de juego*
 //Funcion para inicio del juego, definicion de botones direccionamiento a HTML
 function iniciarJuego(){
     
     sectionSeleccionarAtaque.style.display = 'none'
-    sectionReiniciar.style.display = 'none'
+
+    mokepones.forEach((mokepon) => {
+        console.log(mokepon.nombre)
+    })
+    //sectionReiniciar.style.display = 'none'
 
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
     botonFuego.addEventListener('click', ataqueFuego)
