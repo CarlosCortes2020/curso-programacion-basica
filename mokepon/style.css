@@ -167,6 +167,29 @@ input:checked + label {
     border-radius: 20px;
 }
 
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#ver-mapa button {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: 3px solid white;
+    margin-top: 10px;
+    background: transparent;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: x-large;
+}
+
+#mapa {
+    border: 2px solid white;
+}
+
 @media (max-width: 360px) {
     .tarjetas{
         flex-direction: column;
