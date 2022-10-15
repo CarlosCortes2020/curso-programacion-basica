@@ -3,6 +3,9 @@ const express = require("express")
 const cors = require("cors")
 
 const app = express()
+
+//Para poder dar alojamiento
+app.use(express.static('public'))
 app.use(cors())
 //*Capacidad de recibir peticiones post con formato json
 app.use(express.json())
@@ -22,6 +25,10 @@ class Jugador {
     actualizarPosicion(x, y) {
         this.x = x
         this.y = y
+    }
+
+    asignarAtaques(ataques) {
+        this.ataques = ataques
     }
 
 }
@@ -75,7 +82,26 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => {
     })
 })
 
+//*Logica para atender peticion desde frontend y mostrar el mokepon seleccionado
+app.post("/mokepon/:jugadorId/ataques", (req, res) => {
+    const jugadorId = req.params.jugadorId || "Ohh Ohh"
+    const ataques = req.body.ataques || []
+        
+    const jugadorIndex = jugadores.findIndex((jugador) => jugadorId == jugador.id)
 
+    if (jugadorIndex >= 0) {
+        jugadores[jugadorIndex].asignarAtaques(ataques)
+    }
+    res.end()
+})
+
+app.get("/mokepon/:jugadorId/ataques", (req, res) => {
+    const jugadorId = req.params.jugadorId || ""
+    const jugador = jugadores.find((jugador) => jugador.id == jugadorId)
+    res.send({
+        ataques: jugador.ataques|| []
+    })
+})
 
 app.listen(8080, () => {
     console.log("Servidor en operacion")
